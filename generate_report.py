@@ -160,10 +160,8 @@ def generate_pdf(output_path):
     story.append(Paragraph("Progress Report 1: AutoRecall Copilot", title_style))
     story.append(Paragraph("An Evaluated Agentic RAG System for Early Detection of Car and Motorcycle Defects", subtitle_style))
     story.append(Paragraph(
-        "<b>Student:</b> Mohammed Zain (Matriculation No. 38001477) &nbsp;|&nbsp; "
-        "<b>Supervisor:</b> Prof. Dr. Humera Noor Minhas<br/>"
-        "<b>Program:</b> MSc Data Science &nbsp;|&nbsp; "
-        "<b>Reporting Period:</b> Sprint 1, 3 to 9 November 2026 (Catch-up submission: 22 November 2026)",
+        "Mohammed Zain (Matriculation No. 38001477) &nbsp;|&nbsp; Supervisor: Prof. Dr. Humera Noor Minhas<br/>"
+        "Program: MSc Data Science, University of Europe for Applied Sciences &nbsp;|&nbsp; Reporting Period: Sprint 1, 3 to 9 November 2026",
         meta_style
     ))
     story.append(HRFlowable(width="100%", thickness=1, color=colors.HexColor('#cbd5e1'), spaceBefore=0, spaceAfter=8))
@@ -472,8 +470,8 @@ def generate_docx(output_path):
     
     p_meta = doc.add_paragraph()
     r_meta = p_meta.add_run(
-        "Student: Mohammed Zain (Matriculation No. 38001477) | Supervisor: Prof. Dr. Humera Noor Minhas\n"
-        "Program: MSc Data Science, University of Europe for Applied Sciences | Reporting Period: Sprint 1, 3 to 9 November 2026 (Catch-up submission: 22 November 2026)"
+        "Mohammed Zain (Matriculation No. 38001477) | Supervisor: Prof. Dr. Humera Noor Minhas\n"
+        "Program: MSc Data Science, University of Europe for Applied Sciences | Reporting Period: Sprint 1, 3 to 9 November 2026"
     )
     r_meta.font.size = Pt(9.5)
     r_meta.font.color.rgb = RGBColor(0x64, 0x74, 0x8b)
@@ -687,17 +685,26 @@ if __name__ == '__main__':
     generate_pdf(workspace_pdf)
     generate_docx(workspace_docx)
     
-    shutil.copy2(workspace_pdf, sem3_pdf)
-    shutil.copy2(workspace_docx, sem3_docx)
+    def safe_copy(src, dst):
+        try:
+            shutil.copy2(src, dst)
+            print(f"Successfully copied to: {dst}")
+        except PermissionError:
+            print(f"Notice: {dst} is currently open in another program (e.g. Word/PDF viewer). File in workspace is updated.")
+        except Exception as e:
+            print(f"Could not copy to {dst}: {e}")
+
+    safe_copy(workspace_pdf, sem3_pdf)
+    safe_copy(workspace_docx, sem3_docx)
     
     downloads_dir = r'c:\Users\Mohammed Zain\Downloads'
     desktop_dir = r'C:\Users\Mohammed Zain\OneDrive\Desktop'
     
-    shutil.copy2(workspace_pdf, os.path.join(downloads_dir, 'Progress_Report_1_AutoRecall_Copilot.pdf'))
-    shutil.copy2(workspace_docx, os.path.join(downloads_dir, 'Progress_Report_1_AutoRecall_Copilot.docx'))
+    safe_copy(workspace_pdf, os.path.join(downloads_dir, 'Progress_Report_1_AutoRecall_Copilot.pdf'))
+    safe_copy(workspace_docx, os.path.join(downloads_dir, 'Progress_Report_1_AutoRecall_Copilot.docx'))
     
     if os.path.exists(desktop_dir):
-        shutil.copy2(workspace_pdf, os.path.join(desktop_dir, 'Progress_Report_1_AutoRecall_Copilot.pdf'))
-        shutil.copy2(workspace_docx, os.path.join(desktop_dir, 'Progress_Report_1_AutoRecall_Copilot.docx'))
+        safe_copy(workspace_pdf, os.path.join(desktop_dir, 'Progress_Report_1_AutoRecall_Copilot.pdf'))
+        safe_copy(workspace_docx, os.path.join(desktop_dir, 'Progress_Report_1_AutoRecall_Copilot.docx'))
         
-    print("Copied humanised files to all targets successfully!")
+    print("Report generation and sync complete!")

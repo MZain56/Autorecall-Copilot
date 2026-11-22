@@ -1,11 +1,8 @@
 # Progress Report 1: AutoRecall Copilot
 **An Evaluated Agentic RAG System for Early Detection of Car and Motorcycle Defects**
 
-- **Student:** Mohammed Zain (Matriculation No. 38001477)
-- **Supervisor:** Prof. Dr. Humera Noor Minhas
-- **Program:** Master of Science in Data Science, University of Europe for Applied Sciences (UE)
-- **Reporting Period:** Sprint 1, 3 to 9 November 2026 (*Catch-up submission: 22 November 2026*)
-- **Project Repository:** `https://github.com/MZain56/Autorecall-Copilot`
+Mohammed Zain (Matriculation No. 38001477) | Supervisor: Prof. Dr. Humera Noor Minhas  
+Program: MSc Data Science, University of Europe for Applied Sciences | Reporting Period: Sprint 1, 3 to 9 November 2026
 
 ---
 
