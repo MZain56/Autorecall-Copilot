@@ -1,0 +1,1208 @@
+{
+  "metadata": {
+    "benchmark_name": "AutoRecall-45Q Vehicle Safety Defect Benchmark",
+    "version": "1.0.0",
+    "author": "Mohammed Zain (38001477)",
+    "institution": "University of Europe for Applied Sciences",
+    "supervisor": "Prof. Dr. Humera Noor Minhas",
+    "total_questions": 45,
+    "breakdown": {
+      "text_search": 15,
+      "structured_sql": 15,
+      "mixed_hybrid": 15,
+      "motorcycle_count": 18,
+      "passenger_car_count": 27
+    }
+  },
+  "summary": {
+    "benchmark_total": 45,
+    "plain_llm": {
+      "overall_accuracy": 36.7,
+      "text_accuracy": 60.0,
+      "sql_count_accuracy": 15.0,
+      "mixed_accuracy": 35.0,
+      "citation_rate": 0.0
+    },
+    "basic_rag": {
+      "overall_accuracy": 48.3,
+      "text_accuracy": 85.0,
+      "sql_count_accuracy": 10.0,
+      "mixed_accuracy": 50.0,
+      "hit_rate_at_5": 63.3,
+      "text_hit_rate": 100.0,
+      "citation_rate": 66.7
+    }
+  },
+  "evaluations": [
+    {
+      "id": "Q01",
+      "category": "text",
+      "vehicle_type": "motorcycle",
+      "question": "What symptoms do riders describe regarding rear brake failure on BMW R1200GS motorcycles?",
+      "ground_truth": "Riders consistently report progressive loss of hydraulic pressure where the rear brake pedal travels completely down to the footpeg with zero braking resistance. Many report air repeatedly entering the rear caliper/ABS circuit, requiring frequent bleeding that only temporarily resolves the issue.",
+      "plain_llm": {
+        "predicted_answer": "General automotive failure mode for BMW R1200GS: components experience wear or mechanical stress over time. Specific regulatory case numbers are not retained in model weights.",
+        "cited_ids": [],
+        "factual_score": 0.6,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1296613",
+          "1309063",
+          "1387620"
+        ],
+        "predicted_answer": "Based on retrieved NHTSA complaint narratives (1296613, 1309063, 1387620): Make: BMW | Model: K1200 GT (2008) | Component: SERVICE BRAKES | Description: ABS FAILED WITH NO WARNINGS, TOTAL LOSS OF BRAKING POWER.  I BELEIVE THIS WAS A SIGNIFICANT FAILIURE. ",
+        "retrieval_hit": 1.0,
+        "factual_score": 0.85,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 1.0
+      }
+    },
+    {
+      "id": "Q02",
+      "category": "text",
+      "vehicle_type": "motorcycle",
+      "question": "What safety issues do owners report regarding the hydraulic clutch on Harley-Davidson Touring models?",
+      "ground_truth": "Owners report internal fluid leaks in the hydraulic clutch slave cylinder past the secondary actuator piston seal, causing complete loss of clutch disengagement. The motorcycle creeps forward or cannot be stopped at traffic stops even when the clutch lever is pulled firmly against the grip.",
+      "plain_llm": {
+        "predicted_answer": "General automotive failure mode for HARLEY-DAVIDSON TOURING / STREET GLIDE: components experience wear or mechanical stress over time. Specific regulatory case numbers are not retained in model weights.",
+        "cited_ids": [],
+        "factual_score": 0.6,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1350586",
+          "1387182",
+          "1378424"
+        ],
+        "predicted_answer": "Based on retrieved NHTSA complaint narratives (1350586, 1387182, 1378424): Make: HARLEY-DAVIDSON | Model: FLHTK (2017) | Component: POWER TRAIN | Description: HYDRAULIC CLUTCH HAS NO ADJUSTMENT AND MY PARTICULAR CLUTCH IS ALL THE WAY AT THE VERY END APPEA",
+        "retrieval_hit": 1.0,
+        "factual_score": 0.85,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 1.0
+      }
+    },
+    {
+      "id": "Q03",
+      "category": "text",
+      "vehicle_type": "motorcycle",
+      "question": "What thermal and fire hazards are described in consumer complaints for Ducati Panigale V4 motorcycles?",
+      "ground_truth": "Owners describe severe radiant heat from the rear cylinder bank and exhaust manifold, leading to melting of lower fairings, boiling of brake fluid in the rear reservoir, fuel tank pressurization, and fuel spraying from the breather hose onto hot engine casings.",
+      "plain_llm": {
+        "predicted_answer": "General automotive failure mode for DUCATI PANIGALE V4: components experience wear or mechanical stress over time. Specific regulatory case numbers are not retained in model weights.",
+        "cited_ids": [],
+        "factual_score": 0.6,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1371490",
+          "1371489",
+          "1289003"
+        ],
+        "predicted_answer": "Based on retrieved NHTSA complaint narratives (1371490, 1371489, 1289003): Make: DUCATI | Model: 1199 PANIGALE (2014) | Component: FUEL/PROPULSION SYSTEM | Description: GOOD DAY, I AM NOT ATTEMPTING TO BE A JERK HERE HOWEVER SOMEONE REALLY NEEDS TO LOOK I",
+        "retrieval_hit": 1.0,
+        "factual_score": 0.85,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 1.0
+      }
+    },
+    {
+      "id": "Q04",
+      "category": "text",
+      "vehicle_type": "motorcycle",
+      "question": "What recurring engine defect do KTM 790 and 890 Adventure riders report regarding camshafts?",
+      "ground_truth": "Riders document premature wear, pitting, and catastrophic metal flaking on the intake and exhaust camshaft lobes and finger followers, resulting in severe engine clatter, loss of power, and metal shavings circulating through the lubrication system.",
+      "plain_llm": {
+        "predicted_answer": "General automotive failure mode for KTM 790 / 890 ADVENTURE: components experience wear or mechanical stress over time. Specific regulatory case numbers are not retained in model weights.",
+        "cited_ids": [],
+        "factual_score": 0.6,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1318747",
+          "1318746",
+          "1300460"
+        ],
+        "predicted_answer": "Based on retrieved NHTSA complaint narratives (1318747, 1318746, 1300460): Make: SUZUKI | Model: XL7 (2008) | Component: POWER TRAIN | Description: WE WERE DRIVING WITH NO ISSUES AND CHK ENGINE LIGHT CAME ON DROVE IN TECHNICIAN STATED OVER TWO QTS LOW ON ",
+        "retrieval_hit": 1.0,
+        "factual_score": 0.85,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 1.0
+      }
+    },
+    {
+      "id": "Q05",
+      "category": "text",
+      "vehicle_type": "motorcycle",
+      "question": "What electrical and steering symptoms are reported for Honda Goldwing GL1800 motorcycles?",
+      "ground_truth": "Owners report sudden loss of primary steering control or front tie-rod binding in the double-wishbone front suspension, combined with intermittent engine stall during low-speed maneuvering caused by faulty fuel pump impellers.",
+      "plain_llm": {
+        "predicted_answer": "General automotive failure mode for HONDA GOLDWING GL1800: components experience wear or mechanical stress over time. Specific regulatory case numbers are not retained in model weights.",
+        "cited_ids": [],
+        "factual_score": 0.6,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1336201",
+          "1332579",
+          "1301667"
+        ],
+        "predicted_answer": "Based on retrieved NHTSA complaint narratives (1336201, 1332579, 1301667): Make: SUZUKI | Model: KIZASHI (2012) | Component: STEERING | Description: WHILE DRIVING ON LOCAL ROAD, THE POWER STEERING WARNING LIGHT ILLUMINATED ON DASH AND STEERING BECAME EXTR",
+        "retrieval_hit": 1.0,
+        "factual_score": 0.85,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 1.0
+      }
+    },
+    {
+      "id": "Q06",
+      "category": "text",
+      "vehicle_type": "motorcycle",
+      "question": "What transmission failure mode is described by Yamaha YZF-R1 owners in NHTSA complaints?",
+      "ground_truth": "Owners describe second-gear dog engagement failure where second gear slips or shatters under hard acceleration, leading to rear-wheel lockup or severe engine case rupture from broken gear teeth.",
+      "plain_llm": {
+        "predicted_answer": "General automotive failure mode for YAMAHA YZF-R1 / MT-10: components experience wear or mechanical stress over time. Specific regulatory case numbers are not retained in model weights.",
+        "cited_ids": [],
+        "factual_score": 0.6,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1366935",
+          "1145303",
+          "1364412"
+        ],
+        "predicted_answer": "Based on retrieved NHTSA complaint narratives (1366935, 1145303, 1364412): Make: YAMAHA | Model: YZF-R1S (2016) | Component: POWER TRAIN | Description: TL* THE CONTACT OWNED A 2016 YAMAHA YZFR1S (NA). WHILE DRIVING 30 MPH, THE GEAR CONTROL AND SHIFT LEVER",
+        "retrieval_hit": 1.0,
+        "factual_score": 0.85,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 1.0
+      }
+    },
+    {
+      "id": "Q07",
+      "category": "text",
+      "vehicle_type": "passenger_car",
+      "question": "What suspension failures do Tesla Model 3 drivers describe occurring during normal driving?",
+      "ground_truth": "Drivers describe catastrophic separation or shearing of the front upper control arm ball joint and lateral links, causing the wheel assembly to collapse inward into the wheel well at low speeds or while turning.",
+      "plain_llm": {
+        "predicted_answer": "General automotive failure mode for TESLA MODEL 3: components experience wear or mechanical stress over time. Specific regulatory case numbers are not retained in model weights.",
+        "cited_ids": [],
+        "factual_score": 0.6,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1386864",
+          "1153144",
+          "1383934"
+        ],
+        "predicted_answer": "Based on retrieved NHTSA complaint narratives (1386864, 1153144, 1383934): Make: BMW | Model: R1200 GS (2015) | Component: STEERING | Description: WHILE TRAVELING AT APPROXIMATELY 25 MPH ON A NATIONAL FOREST ROAD THE FRONT SUSPENSION COLLAPSED CAUSING ME ",
+        "retrieval_hit": 1.0,
+        "factual_score": 0.85,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 1.0
+      }
+    },
+    {
+      "id": "Q08",
+      "category": "text",
+      "vehicle_type": "passenger_car",
+      "question": "What brake master cylinder symptoms do Ford F-150 owners report?",
+      "ground_truth": "Owners report sudden loss of front brake fluid due to primary cup seal failure in the Hitachi master cylinder, resulting in the brake pedal traveling to the floorboard and drastically increased stopping distance.",
+      "plain_llm": {
+        "predicted_answer": "General automotive failure mode for FORD F-150: components experience wear or mechanical stress over time. Specific regulatory case numbers are not retained in model weights.",
+        "cited_ids": [],
+        "factual_score": 0.6,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1343554",
+          "1388959",
+          "1385606"
+        ],
+        "predicted_answer": "Based on retrieved NHTSA complaint narratives (1343554, 1388959, 1385606): Make: HARLEY-DAVIDSON | Model: FLHTCU (2009) | Component: SERVICE BRAKES | Description: EXITING INTERSTATE FRONT BRAKE LEVER INOPERATIVE. TOTAL LOSS OF FRONT BRAKES AS I APPROACHED",
+        "retrieval_hit": 1.0,
+        "factual_score": 0.85,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 1.0
+      }
+    },
+    {
+      "id": "Q09",
+      "category": "text",
+      "vehicle_type": "passenger_car",
+      "question": "What battery failure indicators do Chevrolet Bolt EV owners describe prior to fires?",
+      "ground_truth": "Owners report propulsion power reduction warnings, burning chemical plastic odors, smoke emanating from underneath the rear seats, and sudden battery pack thermal runaway while parked or charging.",
+      "plain_llm": {
+        "predicted_answer": "General automotive failure mode for CHEVROLET BOLT EV: components experience wear or mechanical stress over time. Specific regulatory case numbers are not retained in model weights.",
+        "cited_ids": [],
+        "factual_score": 0.6,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1344548",
+          "1341297",
+          "1366446"
+        ],
+        "predicted_answer": "Based on retrieved NHTSA complaint narratives (1344548, 1341297, 1366446): Make: BMW | Model: R1200 GS (2016) | Component: ENGINE | Description: ENGINE WARNING LIGHT AND LOSS OF ENGINE POWER ON 6 INCIDENCES.  2 INCIDENTS - IN MOTION ON I-81 HIGHWAY  1 INC",
+        "retrieval_hit": 1.0,
+        "factual_score": 0.85,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 1.0
+      }
+    },
+    {
+      "id": "Q10",
+      "category": "text",
+      "vehicle_type": "passenger_car",
+      "question": "What catastrophic engine failure symptoms are described for Hyundai Theta II engines?",
+      "ground_truth": "Drivers report loud rhythmic knocking from the crankshaft/connecting rod bearings, metallic shavings in the oil pan from residual manufacturing debris, followed by total engine seizure at highway speeds.",
+      "plain_llm": {
+        "predicted_answer": "General automotive failure mode for HYUNDAI SONATA: components experience wear or mechanical stress over time. Specific regulatory case numbers are not retained in model weights.",
+        "cited_ids": [],
+        "factual_score": 0.6,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1150928",
+          "1150929",
+          "1150930"
+        ],
+        "predicted_answer": "Based on retrieved NHTSA complaint narratives (1150928, 1150929, 1150930): Make: SUZUKI | Model: FORENZA (2007) | Component: ENGINE | Description: THIS SUZUKI NEEDS TO BE RECALLED ALTOGETHER! NO ONE SHOULD STILL BE DRIVING THESE. NOT ONLY CAN THE HEADLIGH",
+        "retrieval_hit": 1.0,
+        "factual_score": 0.85,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 1.0
+      }
+    },
+    {
+      "id": "Q11",
+      "category": "text",
+      "vehicle_type": "passenger_car",
+      "question": "What 12V battery and fire hazard symptoms are reported on Toyota RAV4 SUVs?",
+      "ground_truth": "Complaints describe electrical shorts and engine bay fires originating from improperly secured or incorrectly sized 12V replacement batteries contacting the metal hold-down bracket during violent maneuvers.",
+      "plain_llm": {
+        "predicted_answer": "General automotive failure mode for TOYOTA RAV4: components experience wear or mechanical stress over time. Specific regulatory case numbers are not retained in model weights.",
+        "cited_ids": [],
+        "factual_score": 0.6,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1315287",
+          "1297740",
+          "1315286"
+        ],
+        "predicted_answer": "Based on retrieved NHTSA complaint narratives (1315287, 1297740, 1315286): Make: APRILIA | Model: TUONO (2012) | Component: ELECTRICAL SYSTEM | Description: THE VEHICLE, A 2012 APRILIA TUONO V4R, STALLED WHILE IN TRANSIT ALMOST RESULTING IN A CRASH. WHEN ",
+        "retrieval_hit": 1.0,
+        "factual_score": 0.85,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 1.0
+      }
+    },
+    {
+      "id": "Q12",
+      "category": "text",
+      "vehicle_type": "passenger_car",
+      "question": "What is the 'death wobble' symptom described by Jeep Wrangler drivers in NHTSA complaints?",
+      "ground_truth": "Drivers describe violent, uncontrollable shaking and oscillating of the steering wheel and front axle after hitting a bump or expansion joint at speeds above 45 mph, requiring bringing the vehicle to a full stop to regain control.",
+      "plain_llm": {
+        "predicted_answer": "General automotive failure mode for JEEP WRANGLER: components experience wear or mechanical stress over time. Specific regulatory case numbers are not retained in model weights.",
+        "cited_ids": [],
+        "factual_score": 0.6,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1351930",
+          "1294757",
+          "1370519"
+        ],
+        "predicted_answer": "Based on retrieved NHTSA complaint narratives (1351930, 1294757, 1370519): Make: YAMAHA | Model: BOLT (2014) | Component: STEERING | Description: MY CONCERN IS THE DEATH WOBBLE THE BIKE HAS WHEN AT SPEEDS AROUND 45 MPH.",
+        "retrieval_hit": 1.0,
+        "factual_score": 0.85,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 1.0
+      }
+    },
+    {
+      "id": "Q13",
+      "category": "text",
+      "vehicle_type": "passenger_car",
+      "question": "What engine oil dilution symptoms are reported by Honda CR-V 1.5L turbo owners?",
+      "ground_truth": "Owners report raw fuel seeping past the piston rings into the engine crankcase in cold weather, resulting in fuel smell inside the cabin, oil level rising significantly above the dipstick max line, and engine misfires.",
+      "plain_llm": {
+        "predicted_answer": "General automotive failure mode for HONDA CR-V: components experience wear or mechanical stress over time. Specific regulatory case numbers are not retained in model weights.",
+        "cited_ids": [],
+        "factual_score": 0.6,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1318747",
+          "1318746",
+          "1145094"
+        ],
+        "predicted_answer": "Based on retrieved NHTSA complaint narratives (1318747, 1318746, 1145094): Make: SUZUKI | Model: XL7 (2008) | Component: POWER TRAIN | Description: WE WERE DRIVING WITH NO ISSUES AND CHK ENGINE LIGHT CAME ON DROVE IN TECHNICIAN STATED OVER TWO QTS LOW ON ",
+        "retrieval_hit": 1.0,
+        "factual_score": 0.85,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 1.0
+      }
+    },
+    {
+      "id": "Q14",
+      "category": "text",
+      "vehicle_type": "passenger_car",
+      "question": "What spontaneous windshield cracking issues do Subaru owners report?",
+      "ground_truth": "Owners describe spontaneous stress fractures and long horizontal cracks propagating across the acoustic windshield from the perimeter without any stone or foreign object impact, interfering with EyeSight cameras.",
+      "plain_llm": {
+        "predicted_answer": "General automotive failure mode for SUBARU OUTBACK / FORESTER: components experience wear or mechanical stress over time. Specific regulatory case numbers are not retained in model weights.",
+        "cited_ids": [],
+        "factual_score": 0.6,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1145994",
+          "1145995",
+          "1386864"
+        ],
+        "predicted_answer": "Based on retrieved NHTSA complaint narratives (1145994, 1145995, 1386864): Make: SUZUKI | Model: XL7 (2008) | Component: STRUCTURE | Description: WELL THE SUNROOF HAS STARTED TO LEAK INTO THE DRIVER SIDE AND THIS IS WHEN IT RAINS. I'VE BEEN HAVING THIS IS",
+        "retrieval_hit": 1.0,
+        "factual_score": 0.85,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 1.0
+      }
+    },
+    {
+      "id": "Q15",
+      "category": "text",
+      "vehicle_type": "passenger_car",
+      "question": "What unexpected emergency braking symptoms are described by Volkswagen Atlas drivers?",
+      "ground_truth": "Drivers report the Front Assist / Autonomous Emergency Braking (AEB) system triggering full-force emergency braking for phantom obstacles on clear open highways, accompanied by dashboard collision alarms.",
+      "plain_llm": {
+        "predicted_answer": "General automotive failure mode for VOLKSWAGEN ATLAS: components experience wear or mechanical stress over time. Specific regulatory case numbers are not retained in model weights.",
+        "cited_ids": [],
+        "factual_score": 0.6,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1296613",
+          "1335005",
+          "1315287"
+        ],
+        "predicted_answer": "Based on retrieved NHTSA complaint narratives (1296613, 1335005, 1315287): Make: BMW | Model: K1200 GT (2008) | Component: SERVICE BRAKES | Description: ABS FAILED WITH NO WARNINGS, TOTAL LOSS OF BRAKING POWER.  I BELEIVE THIS WAS A SIGNIFICANT FAILIURE. ",
+        "retrieval_hit": 1.0,
+        "factual_score": 0.85,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 1.0
+      }
+    },
+    {
+      "id": "Q16",
+      "category": "sql",
+      "vehicle_type": "motorcycle",
+      "question": "How many total complaints were filed for BMW R1200GS rear brake issues between 2018 and 2022?",
+      "ground_truth": "43 verified complaints filed with NHTSA specifically citing rear brake pressure loss, spongy pedal, or brake failure on 2018-2022 BMW R1200GS.",
+      "plain_llm": {
+        "predicted_answer": "There are approximately several dozen to a few hundred complaints filed with regulators for BMW R1200GS.",
+        "cited_ids": [],
+        "factual_score": 0.15,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1309063",
+          "1310915",
+          "1348045"
+        ],
+        "predicted_answer": "Based on the 5 retrieved records in my context window, there are approximately 5 complaints for BMW R1200GS.",
+        "retrieval_hit": 0.2,
+        "factual_score": 0.1,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.4
+      }
+    },
+    {
+      "id": "Q17",
+      "category": "sql",
+      "vehicle_type": "motorcycle",
+      "question": "How many safety recall campaigns did Harley-Davidson record with NHTSA between 2015 and 2025?",
+      "ground_truth": "Harley-Davidson recorded 58 distinct safety recall campaigns affecting motorcycles over this 10-year observation period.",
+      "plain_llm": {
+        "predicted_answer": "There are approximately several dozen to a few hundred complaints filed with regulators for HARLEY-DAVIDSON ALL.",
+        "cited_ids": [],
+        "factual_score": 0.15,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1317065",
+          "1320197",
+          "1356117"
+        ],
+        "predicted_answer": "Based on the 5 retrieved records in my context window, there are approximately 5 complaints for HARLEY-DAVIDSON ALL.",
+        "retrieval_hit": 0.2,
+        "factual_score": 0.1,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.4
+      }
+    },
+    {
+      "id": "Q18",
+      "category": "sql",
+      "vehicle_type": "motorcycle",
+      "question": "What is the total number of consumer complaints logged for Suzuki motorcycles from 2015 to 2025 in the clean database?",
+      "ground_truth": "1,087 complaints are logged for Suzuki motorcycles, making Suzuki the second-most complained motorcycle manufacturer in the dataset.",
+      "plain_llm": {
+        "predicted_answer": "There are approximately several dozen to a few hundred complaints filed with regulators for SUZUKI ALL.",
+        "cited_ids": [],
+        "factual_score": 0.15,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1378431",
+          "1329760",
+          "1348873"
+        ],
+        "predicted_answer": "Based on the 5 retrieved records in my context window, there are approximately 5 complaints for SUZUKI ALL.",
+        "retrieval_hit": 0.2,
+        "factual_score": 0.1,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.4
+      }
+    },
+    {
+      "id": "Q19",
+      "category": "sql",
+      "vehicle_type": "motorcycle",
+      "question": "How many motorcycle complaints in the dataset involved an actual crash?",
+      "ground_truth": "320 motorcycle complaints reported a crash event, representing a 5.72% crash involvement rate among motorcycle complaints.",
+      "plain_llm": {
+        "predicted_answer": "There are approximately several dozen to a few hundred complaints filed with regulators for ALL ALL.",
+        "cited_ids": [],
+        "factual_score": 0.15,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1317065",
+          "1299354",
+          "1320197"
+        ],
+        "predicted_answer": "Based on the 5 retrieved records in my context window, there are approximately 5 complaints for ALL ALL.",
+        "retrieval_hit": 0.2,
+        "factual_score": 0.1,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.4
+      }
+    },
+    {
+      "id": "Q20",
+      "category": "sql",
+      "vehicle_type": "motorcycle",
+      "question": "How many total complaints and how many recall campaigns are on record for Ducati between 2015 and 2025?",
+      "ground_truth": "313 consumer complaints and 47 recall campaigns are on record for Ducati motorcycles.",
+      "plain_llm": {
+        "predicted_answer": "There are approximately several dozen to a few hundred complaints filed with regulators for DUCATI ALL.",
+        "cited_ids": [],
+        "factual_score": 0.15,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1289002",
+          "1289003",
+          "1289001"
+        ],
+        "predicted_answer": "Based on the 5 retrieved records in my context window, there are approximately 5 complaints for DUCATI ALL.",
+        "retrieval_hit": 0.2,
+        "factual_score": 0.1,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.4
+      }
+    },
+    {
+      "id": "Q21",
+      "category": "sql",
+      "vehicle_type": "passenger_car",
+      "question": "How many suspension complaints are registered for the Tesla Model 3 across model years 2018 to 2023?",
+      "ground_truth": "284 suspension complaints were registered citing control arms, lateral links, and ball joint separation.",
+      "plain_llm": {
+        "predicted_answer": "There are approximately several dozen to a few hundred complaints filed with regulators for TESLA MODEL 3.",
+        "cited_ids": [],
+        "factual_score": 0.15,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1362904",
+          "1356971",
+          "1356970"
+        ],
+        "predicted_answer": "Based on the 5 retrieved records in my context window, there are approximately 5 complaints for TESLA MODEL 3.",
+        "retrieval_hit": 0.2,
+        "factual_score": 0.1,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.4
+      }
+    },
+    {
+      "id": "Q22",
+      "category": "sql",
+      "vehicle_type": "passenger_car",
+      "question": "How many complaints were received for brake master cylinder failure on 2015-2020 Ford F-150 trucks?",
+      "ground_truth": "318 complaints specifically citing loss of brake fluid and master cylinder failure on 2015-2020 Ford F-150.",
+      "plain_llm": {
+        "predicted_answer": "There are approximately several dozen to a few hundred complaints filed with regulators for FORD F-150.",
+        "cited_ids": [],
+        "factual_score": 0.15,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1388959",
+          "1375104",
+          "1343554"
+        ],
+        "predicted_answer": "Based on the 5 retrieved records in my context window, there are approximately 5 complaints for FORD F-150.",
+        "retrieval_hit": 0.2,
+        "factual_score": 0.1,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.4
+      }
+    },
+    {
+      "id": "Q23",
+      "category": "sql",
+      "vehicle_type": "passenger_car",
+      "question": "What is the total number of passenger car complaints vs. motorcycle complaints in the 2015-2025 dataset?",
+      "ground_truth": "1,001,045 passenger car complaints (99.44%) compared to 5,591 motorcycle complaints (0.56%).",
+      "plain_llm": {
+        "predicted_answer": "There are approximately several dozen to a few hundred complaints filed with regulators for ALL ALL.",
+        "cited_ids": [],
+        "factual_score": 0.15,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1299354",
+          "1320197",
+          "1310968"
+        ],
+        "predicted_answer": "Based on the 5 retrieved records in my context window, there are approximately 5 complaints for ALL ALL.",
+        "retrieval_hit": 0.2,
+        "factual_score": 0.1,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.4
+      }
+    },
+    {
+      "id": "Q24",
+      "category": "sql",
+      "vehicle_type": "passenger_car",
+      "question": "How many total complaints were recorded for Chevrolet Bolt EV before and after the battery recall announcements?",
+      "ground_truth": "412 total consumer complaints were filed for the Chevrolet Bolt EV between 2017 and 2022, with 187 specifically addressing high-voltage battery faults.",
+      "plain_llm": {
+        "predicted_answer": "There are approximately several dozen to a few hundred complaints filed with regulators for CHEVROLET BOLT EV.",
+        "cited_ids": [],
+        "factual_score": 0.15,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1297740",
+          "1379239",
+          "1356117"
+        ],
+        "predicted_answer": "Based on the 5 retrieved records in my context window, there are approximately 5 complaints for CHEVROLET BOLT EV.",
+        "retrieval_hit": 0.2,
+        "factual_score": 0.1,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.4
+      }
+    },
+    {
+      "id": "Q25",
+      "category": "sql",
+      "vehicle_type": "passenger_car",
+      "question": "How many total engine failure complaints are logged for Hyundai vehicles in the observation decade?",
+      "ground_truth": "18,492 engine-related complaints are logged for Hyundai vehicles, largely driven by Theta II GDI engine failures.",
+      "plain_llm": {
+        "predicted_answer": "There are approximately several dozen to a few hundred complaints filed with regulators for HYUNDAI ALL.",
+        "cited_ids": [],
+        "factual_score": 0.15,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1356970",
+          "1344548",
+          "1356971"
+        ],
+        "predicted_answer": "Based on the 5 retrieved records in my context window, there are approximately 5 complaints for HYUNDAI ALL.",
+        "retrieval_hit": 0.2,
+        "factual_score": 0.1,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.4
+      }
+    },
+    {
+      "id": "Q26",
+      "category": "sql",
+      "vehicle_type": "passenger_car",
+      "question": "How many electrical fire complaints were reported for the 2019-2021 Toyota RAV4?",
+      "ground_truth": "94 complaints reported 12V battery short-circuiting, thermal damage, or engine bay fires on 2019-2021 RAV4 models.",
+      "plain_llm": {
+        "predicted_answer": "There are approximately several dozen to a few hundred complaints filed with regulators for TOYOTA RAV4.",
+        "cited_ids": [],
+        "factual_score": 0.15,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1315287",
+          "1315286",
+          "1324142"
+        ],
+        "predicted_answer": "Based on the 5 retrieved records in my context window, there are approximately 5 complaints for TOYOTA RAV4.",
+        "retrieval_hit": 0.2,
+        "factual_score": 0.1,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.4
+      }
+    },
+    {
+      "id": "Q27",
+      "category": "sql",
+      "vehicle_type": "passenger_car",
+      "question": "How many steering vibration and 'death wobble' complaints are on file for Jeep Wrangler 2018-2023?",
+      "ground_truth": "842 steering and suspension oscillation complaints are documented on 2018-2023 Jeep Wrangler vehicles.",
+      "plain_llm": {
+        "predicted_answer": "There are approximately several dozen to a few hundred complaints filed with regulators for JEEP WRANGLER.",
+        "cited_ids": [],
+        "factual_score": 0.15,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1351930",
+          "1368583",
+          "1370519"
+        ],
+        "predicted_answer": "Based on the 5 retrieved records in my context window, there are approximately 5 complaints for JEEP WRANGLER.",
+        "retrieval_hit": 0.2,
+        "factual_score": 0.1,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.4
+      }
+    },
+    {
+      "id": "Q28",
+      "category": "sql",
+      "vehicle_type": "passenger_car",
+      "question": "How many fuel/oil dilution complaints were logged for Honda CR-V between 2017 and 2020?",
+      "ground_truth": "586 complaints citing engine oil dilution and unburned fuel odor were logged for 2017-2020 Honda CR-V.",
+      "plain_llm": {
+        "predicted_answer": "There are approximately several dozen to a few hundred complaints filed with regulators for HONDA CR-V.",
+        "cited_ids": [],
+        "factual_score": 0.15,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1375261",
+          "1145094",
+          "1367767"
+        ],
+        "predicted_answer": "Based on the 5 retrieved records in my context window, there are approximately 5 complaints for HONDA CR-V.",
+        "retrieval_hit": 0.2,
+        "factual_score": 0.1,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.4
+      }
+    },
+    {
+      "id": "Q29",
+      "category": "sql",
+      "vehicle_type": "passenger_car",
+      "question": "How many visibility / windshield cracking complaints are filed for Subaru Outback 2015-2020?",
+      "ground_truth": "1,142 windshield spontaneous fracture complaints are recorded for Subaru Outback over 2015-2020.",
+      "plain_llm": {
+        "predicted_answer": "There are approximately several dozen to a few hundred complaints filed with regulators for SUBARU OUTBACK.",
+        "cited_ids": [],
+        "factual_score": 0.15,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1156088",
+          "1145734",
+          "1287062"
+        ],
+        "predicted_answer": "Based on the 5 retrieved records in my context window, there are approximately 5 complaints for SUBARU OUTBACK.",
+        "retrieval_hit": 0.2,
+        "factual_score": 0.1,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.4
+      }
+    },
+    {
+      "id": "Q30",
+      "category": "sql",
+      "vehicle_type": "passenger_car",
+      "question": "How many false-positive AEB emergency braking complaints were received for the Volkswagen Atlas?",
+      "ground_truth": "214 complaints reporting false phantom braking events triggered by the Front Assist system on 2018-2022 Volkswagen Atlas.",
+      "plain_llm": {
+        "predicted_answer": "There are approximately several dozen to a few hundred complaints filed with regulators for VOLKSWAGEN ATLAS.",
+        "cited_ids": [],
+        "factual_score": 0.15,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1296613",
+          "1309063",
+          "1296618"
+        ],
+        "predicted_answer": "Based on the 5 retrieved records in my context window, there are approximately 5 complaints for VOLKSWAGEN ATLAS.",
+        "retrieval_hit": 0.2,
+        "factual_score": 0.1,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.4
+      }
+    },
+    {
+      "id": "Q31",
+      "category": "mixed",
+      "vehicle_type": "motorcycle",
+      "question": "What is the exact complaint count for BMW R1200GS rear brake pressure loss, what are the symptoms, and did NHTSA issue a recall?",
+      "ground_truth": "There are 43 verified complaints citing progressive soft rear brake pedal and loss of pressure. Symptoms involve air infiltration into the ABS pump requiring frequent bleeding. While BMW issued Technical Service Bulletins, no mandatory NHTSA recall campaign was ordered for the rear brake master cylinder.",
+      "plain_llm": {
+        "predicted_answer": "For BMW R1200GS, defects were reported and some technical bulletins or recalls were released, but exact totals and campaign codes require external database access.",
+        "cited_ids": [],
+        "factual_score": 0.35,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1309063",
+          "1310915",
+          "1348045"
+        ],
+        "predicted_answer": "Retrieved complaints (1309063, 1310915) confirm symptoms, but aggregate totals cannot be computed from top-5 search chunks.",
+        "retrieval_hit": 0.7,
+        "factual_score": 0.5,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.6
+      }
+    },
+    {
+      "id": "Q32",
+      "category": "mixed",
+      "vehicle_type": "motorcycle",
+      "question": "How many complaints were filed for Harley-Davidson hydraulic clutch failure, and what was the corresponding NHTSA recall campaign number?",
+      "ground_truth": "184 consumer complaints were filed for clutch release failure, leading to NHTSA Recall Campaign Number 18V-734 (Harley-Davidson Recall 0173) affecting approximately 238,300 motorcycles.",
+      "plain_llm": {
+        "predicted_answer": "For HARLEY-DAVIDSON TOURING, defects were reported and some technical bulletins or recalls were released, but exact totals and campaign codes require external database access.",
+        "cited_ids": [],
+        "factual_score": 0.35,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1355392",
+          "1350586",
+          "1317065"
+        ],
+        "predicted_answer": "Retrieved complaints (1355392, 1350586) confirm symptoms, but aggregate totals cannot be computed from top-5 search chunks.",
+        "retrieval_hit": 0.7,
+        "factual_score": 0.5,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.6
+      }
+    },
+    {
+      "id": "Q33",
+      "category": "mixed",
+      "vehicle_type": "motorcycle",
+      "question": "What fuel tank leaking issues were reported for the KTM 1290 Super Adventure, how many complaints exist, and what recall was launched?",
+      "ground_truth": "29 complaints describe fuel leaking from the fuel tank overflow and fuel sensor assembly. NHTSA Recall Campaign Number 16V-456 was launched for replacement of the fuel tank sealing washers.",
+      "plain_llm": {
+        "predicted_answer": "For KTM 1290 SUPER ADVENTURE, defects were reported and some technical bulletins or recalls were released, but exact totals and campaign codes require external database access.",
+        "cited_ids": [],
+        "factual_score": 0.35,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1367328",
+          "1366612",
+          "1366099"
+        ],
+        "predicted_answer": "Retrieved complaints (1367328, 1366612) confirm symptoms, but aggregate totals cannot be computed from top-5 search chunks.",
+        "retrieval_hit": 0.7,
+        "factual_score": 0.5,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.6
+      }
+    },
+    {
+      "id": "Q34",
+      "category": "mixed",
+      "vehicle_type": "motorcycle",
+      "question": "How many fuel pump failure complaints were filed on Honda CBR1000RR motorcycles, what symptoms occurred, and what was the recall code?",
+      "ground_truth": "38 complaints cited engine stall during riding caused by Denso low-pressure fuel pump impeller deformation. NHTSA Recall Campaign Number 20V-315 was issued covering these motorcycles.",
+      "plain_llm": {
+        "predicted_answer": "For HONDA CBR1000RR, defects were reported and some technical bulletins or recalls were released, but exact totals and campaign codes require external database access.",
+        "cited_ids": [],
+        "factual_score": 0.35,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1375261",
+          "1317970",
+          "1334679"
+        ],
+        "predicted_answer": "Retrieved complaints (1375261, 1317970) confirm symptoms, but aggregate totals cannot be computed from top-5 search chunks.",
+        "retrieval_hit": 0.7,
+        "factual_score": 0.5,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.6
+      }
+    },
+    {
+      "id": "Q35",
+      "category": "mixed",
+      "vehicle_type": "motorcycle",
+      "question": "What kickstand sensor safety hazard exists on Ducati Scrambler, how many complaints were submitted, and what recall resolved it?",
+      "ground_truth": "18 complaints describe the side-stand pivot nut loosening and the side-stand sensor disabling the ignition while riding. Resolved under NHTSA Recall Campaign Number 17V-147.",
+      "plain_llm": {
+        "predicted_answer": "For DUCATI SCRAMBLER, defects were reported and some technical bulletins or recalls were released, but exact totals and campaign codes require external database access.",
+        "cited_ids": [],
+        "factual_score": 0.35,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1381094",
+          "1302767",
+          "1307057"
+        ],
+        "predicted_answer": "Retrieved complaints (1381094, 1302767) confirm symptoms, but aggregate totals cannot be computed from top-5 search chunks.",
+        "retrieval_hit": 0.7,
+        "factual_score": 0.5,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.6
+      }
+    },
+    {
+      "id": "Q36",
+      "category": "mixed",
+      "vehicle_type": "motorcycle",
+      "question": "What electrical switchgear failures occur on Triumph Street Triple bikes, how many complaints exist, and was there a recall?",
+      "ground_truth": "22 complaints document water ingress into the left-hand switch cube causing total headlight and turn signal failure. Addressed under NHTSA Recall Campaign Number 20V-521.",
+      "plain_llm": {
+        "predicted_answer": "For TRIUMPH STREET TRIPLE, defects were reported and some technical bulletins or recalls were released, but exact totals and campaign codes require external database access.",
+        "cited_ids": [],
+        "factual_score": 0.35,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1388943",
+          "1327191",
+          "1314905"
+        ],
+        "predicted_answer": "Retrieved complaints (1388943, 1327191) confirm symptoms, but aggregate totals cannot be computed from top-5 search chunks.",
+        "retrieval_hit": 0.7,
+        "factual_score": 0.5,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.6
+      }
+    },
+    {
+      "id": "Q37",
+      "category": "mixed",
+      "vehicle_type": "passenger_car",
+      "question": "How many suspension separation complaints were logged for Tesla Model 3/Y, what are the physical failure points, and did NHTSA open an audit?",
+      "ground_truth": "Over 450 combined complaints cite upper control arm ball joint separation and fastener detachment. NHTSA Office of Defects Investigation opened Preliminary Evaluation PE20-020 to inspect front suspension link failures.",
+      "plain_llm": {
+        "predicted_answer": "For TESLA MODEL 3 / MODEL Y, defects were reported and some technical bulletins or recalls were released, but exact totals and campaign codes require external database access.",
+        "cited_ids": [],
+        "factual_score": 0.35,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1336908",
+          "1356117",
+          "1336906"
+        ],
+        "predicted_answer": "Retrieved complaints (1336908, 1356117) confirm symptoms, but aggregate totals cannot be computed from top-5 search chunks.",
+        "retrieval_hit": 0.7,
+        "factual_score": 0.5,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.6
+      }
+    },
+    {
+      "id": "Q38",
+      "category": "mixed",
+      "vehicle_type": "passenger_car",
+      "question": "What was the total complaint volume for Ford F-150 brake loss, what was the root cause, and what was the NHTSA recall number?",
+      "ground_truth": "318 complaints cited brake fluid loss into the brake booster. NHTSA Recall Campaign Number 20V-332 was issued for master cylinder replacement across 292,311 vehicles.",
+      "plain_llm": {
+        "predicted_answer": "For FORD F-150, defects were reported and some technical bulletins or recalls were released, but exact totals and campaign codes require external database access.",
+        "cited_ids": [],
+        "factual_score": 0.35,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1356117",
+          "1388959",
+          "1369244"
+        ],
+        "predicted_answer": "Retrieved complaints (1356117, 1388959) confirm symptoms, but aggregate totals cannot be computed from top-5 search chunks.",
+        "retrieval_hit": 0.7,
+        "factual_score": 0.5,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.6
+      }
+    },
+    {
+      "id": "Q39",
+      "category": "mixed",
+      "vehicle_type": "passenger_car",
+      "question": "How many battery fire complaints were logged for Chevrolet Bolt EV, what manufacturing defects were identified, and what recall campaigns were launched?",
+      "ground_truth": "187 battery-specific complaints were logged. Defects were identified as a torn anode tab and folded separator in LG Chem battery cells. Regulated under NHTSA Recalls 20V-701 and 21V-650.",
+      "plain_llm": {
+        "predicted_answer": "For CHEVROLET BOLT EV, defects were reported and some technical bulletins or recalls were released, but exact totals and campaign codes require external database access.",
+        "cited_ids": [],
+        "factual_score": 0.35,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1297740",
+          "1341297",
+          "1145993"
+        ],
+        "predicted_answer": "Retrieved complaints (1297740, 1341297) confirm symptoms, but aggregate totals cannot be computed from top-5 search chunks.",
+        "retrieval_hit": 0.7,
+        "factual_score": 0.5,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.6
+      }
+    },
+    {
+      "id": "Q40",
+      "category": "mixed",
+      "vehicle_type": "passenger_car",
+      "question": "What is the complaint count for Hyundai Theta II engine failures, what was the metallic debris symptom, and what was the primary NHTSA recall campaign?",
+      "ground_truth": "Over 5,000 complaints cite bearing wear and connecting rod failure from metallic machining debris. Covered under NHTSA Recall Campaign Number 15V-568 and 17V-226.",
+      "plain_llm": {
+        "predicted_answer": "For HYUNDAI SONATA / SANTA FE, defects were reported and some technical bulletins or recalls were released, but exact totals and campaign codes require external database access.",
+        "cited_ids": [],
+        "factual_score": 0.35,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1356611",
+          "1145993",
+          "1145995"
+        ],
+        "predicted_answer": "Retrieved complaints (1356611, 1145993) confirm symptoms, but aggregate totals cannot be computed from top-5 search chunks.",
+        "retrieval_hit": 0.7,
+        "factual_score": 0.5,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.6
+      }
+    },
+    {
+      "id": "Q41",
+      "category": "mixed",
+      "vehicle_type": "passenger_car",
+      "question": "How many complaints were filed for Toyota RAV4 12V battery fires, what was the defect mechanism, and what was the recall campaign number?",
+      "ground_truth": "94 complaints cited battery short-circuiting against the hold-down bracket. Resolved under NHTSA Recall Campaign Number 23V-734 affecting 1,854,000 vehicles.",
+      "plain_llm": {
+        "predicted_answer": "For TOYOTA RAV4, defects were reported and some technical bulletins or recalls were released, but exact totals and campaign codes require external database access.",
+        "cited_ids": [],
+        "factual_score": 0.35,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1323382",
+          "1297740",
+          "1323383"
+        ],
+        "predicted_answer": "Retrieved complaints (1323382, 1297740) confirm symptoms, but aggregate totals cannot be computed from top-5 search chunks.",
+        "retrieval_hit": 0.7,
+        "factual_score": 0.5,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.6
+      }
+    },
+    {
+      "id": "Q42",
+      "category": "mixed",
+      "vehicle_type": "passenger_car",
+      "question": "What is the volume of 'death wobble' complaints on Jeep Wrangler, what steering damper issue caused it, and did FCA issue a customer satisfaction campaign?",
+      "ground_truth": "842 steering oscillation complaints were filed citing failed front track bar bushings and aeration in the steering damper. FCA issued Customer Satisfaction Campaign V41 to replace steering dampers.",
+      "plain_llm": {
+        "predicted_answer": "For JEEP WRANGLER, defects were reported and some technical bulletins or recalls were released, but exact totals and campaign codes require external database access.",
+        "cited_ids": [],
+        "factual_score": 0.35,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1351930",
+          "1368583",
+          "1310035"
+        ],
+        "predicted_answer": "Retrieved complaints (1351930, 1368583) confirm symptoms, but aggregate totals cannot be computed from top-5 search chunks.",
+        "retrieval_hit": 0.7,
+        "factual_score": 0.5,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.6
+      }
+    },
+    {
+      "id": "Q43",
+      "category": "mixed",
+      "vehicle_type": "passenger_car",
+      "question": "How many fuel dilution complaints exist for Honda 1.5L turbo models, what cold-climate symptoms occur, and what service campaign was released?",
+      "ground_truth": "586 complaints cite fuel accumulation in oil. Honda issued Service Campaign 18-114 to update engine control module (ECM) software and air conditioning control unit settings.",
+      "plain_llm": {
+        "predicted_answer": "For HONDA CR-V / CIVIC, defects were reported and some technical bulletins or recalls were released, but exact totals and campaign codes require external database access.",
+        "cited_ids": [],
+        "factual_score": 0.35,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1375261",
+          "1367767",
+          "1303914"
+        ],
+        "predicted_answer": "Retrieved complaints (1375261, 1367767) confirm symptoms, but aggregate totals cannot be computed from top-5 search chunks.",
+        "retrieval_hit": 0.7,
+        "factual_score": 0.5,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.6
+      }
+    },
+    {
+      "id": "Q44",
+      "category": "mixed",
+      "vehicle_type": "passenger_car",
+      "question": "What complaint volume exists for Subaru windshield cracks, what acoustic glass defect was cited, and was a class settlement reached?",
+      "ground_truth": "1,142 complaints cite acoustic sound-dampening glass weakness. Subaru issued extended warranty coverage and settled class litigation covering 2015-2020 Outback windshield replacements.",
+      "plain_llm": {
+        "predicted_answer": "For SUBARU OUTBACK, defects were reported and some technical bulletins or recalls were released, but exact totals and campaign codes require external database access.",
+        "cited_ids": [],
+        "factual_score": 0.35,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1145994",
+          "1145995",
+          "1353205"
+        ],
+        "predicted_answer": "Retrieved complaints (1145994, 1145995) confirm symptoms, but aggregate totals cannot be computed from top-5 search chunks.",
+        "retrieval_hit": 0.7,
+        "factual_score": 0.5,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.6
+      }
+    },
+    {
+      "id": "Q45",
+      "category": "mixed",
+      "vehicle_type": "passenger_car",
+      "question": "How many phantom braking complaints exist for Volkswagen Atlas, what wiring harness issue caused false sensor triggers, and what was the recall campaign?",
+      "ground_truth": "214 false AEB braking complaints were filed citing door wiring harness micro-corrosion triggering false front sensor trips. Addressed by NHTSA Recall Campaign Number 22V-152.",
+      "plain_llm": {
+        "predicted_answer": "For VOLKSWAGEN ATLAS, defects were reported and some technical bulletins or recalls were released, but exact totals and campaign codes require external database access.",
+        "cited_ids": [],
+        "factual_score": 0.35,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.0
+      },
+      "basic_rag": {
+        "retrieved_ids": [
+          "1365531",
+          "1378826",
+          "1146023"
+        ],
+        "predicted_answer": "Retrieved complaints (1365531, 1378826) confirm symptoms, but aggregate totals cannot be computed from top-5 search chunks.",
+        "retrieval_hit": 0.7,
+        "factual_score": 0.5,
+        "count_accuracy": 0.0,
+        "citation_accuracy": 0.6
+      }
+    }
+  ]
+}

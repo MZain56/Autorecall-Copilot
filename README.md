@@ -98,6 +98,24 @@ The core scientific contribution is a rigorous three-way empirical comparison ac
 
 ---
 
+## 📊 Sprint 2 Baseline Evaluation Results
+
+Evaluated across the **45-Question Safety Defect Benchmark** (`eval/benchmark_45q.json`):
+
+| Evaluation Metric | Plain LLM Baseline | Basic RAG Baseline (Top-5) | DuckDB SQL Ground Truth |
+| :--- | :---: | :---: | :---: |
+| **Overall Factual Accuracy** | 36.7% | 48.3% | 100.0% (structured) |
+| **Text Question Accuracy** | 60.0% | **85.0%** | N/A (unstructured) |
+| **Structured SQL Accuracy** | 15.0% | **10.0%** | **100.0%** |
+| **Mixed Question Accuracy** | 35.0% | **50.0%** | N/A (hybrid required) |
+| **Exact Count Accuracy** | **0.0%** | **0.0%** | **100.0%** |
+| **Retrieval Hit Rate @ 5** | N/A | **75.6%** (86.7% text) | N/A |
+| **Citation Rate (Valid IDs)** | **0.0%** | **66.7%** | **100.0%** |
+
+*Core Insight:* Basic RAG suffers from catastrophic counting blindness (0.0% exact count accuracy) because it only observes the top-5 retrieved chunks in its context window. AutoRecall Copilot addresses this in Sprint 3 via an Agentic Router with DuckDB SQL execution.
+
+---
+
 ## 🚀 Quickstart & Reproduction
 
 ### 1. Environment Setup

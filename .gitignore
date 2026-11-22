@@ -28,6 +28,9 @@ data/raw/*.zip
 data/raw/*.txt
 data/processed/*.duckdb
 data/processed/*.parquet
+data/processed/*.db
+data/processed/*.sqlite3
+data/processed/chroma_index/
 data/vector_db/
 
 # OS / IDE
