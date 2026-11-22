@@ -640,3 +640,4 @@ if __name__ == "__main__":
         safe_copy(workspace_docx, os.path.join(desktop_dir, 'Progress_Report_2_AutoRecall_Copilot.docx'))
         
     print("Report 2 generation and sync complete!")
+

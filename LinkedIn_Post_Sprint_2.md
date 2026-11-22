@@ -41,3 +41,4 @@ In Sprint 3, I am connecting these two engines through an Agent Router that auto
 Automotive engineers and ML practitioners: How are your teams handling quantitative questions in your RAG pipelines? Are you using Text-to-SQL agents or hybrid architectures?
 
 #DataScience #MachineLearning #AppliedAI #RAG #AutomotiveEngineering #VehicleSafety #LLMOps #MScDataScience #DuckDB #ChromaDB
+
