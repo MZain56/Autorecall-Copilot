@@ -4,103 +4,87 @@
 - **Student:** Mohammed Zain (Matriculation No. 38001477)
 - **Supervisor:** Prof. Dr. Humera Noor Minhas
 - **Program:** Master of Science in Data Science, University of Europe for Applied Sciences (UE)
-- **Reporting Period:** Sprint 1, 3 to 9 November 2026 (*Catch-Up Submission: 22 November 2026*)
-- **Project Repository:** `autorecall-copilot` (Local & Version Controlled)
+- **Reporting Period:** Sprint 1, 3 to 9 November 2026 (*Catch-up submission: 22 November 2026*)
+- **Project Repository:** `https://github.com/MZain56/Autorecall-Copilot`
 
 ---
 
 ## 1. Summary
 
-Sprint 1 focused on formal project initiation, environment configuration, official NHTSA data acquisition, exploratory schema analysis, database ingestion, and drafting the initial benchmark test battery. The comprehensive Capstone Proposal and University of Europe application form were completed and formally approved by Dr. Humera Noor Minhas. Official National Highway Traffic Safety Administration (NHTSA) Office of Defects Investigation (ODI) complaints and recall datasets spanning 2015 to 2025 were downloaded directly from official federal servers (no Kaggle, no synthetic data), verified against official layout dictionaries, and ingested into a local DuckDB analytical database (`autorecall.duckdb`).
+In Sprint 1, I focused on getting the project environment ready, writing the formal proposal, and downloading the official NHTSA complaints and recalls datasets. My proposal and university application form were approved by Dr. Humera Noor Minhas. I downloaded the official raw data files directly from NHTSA servers (not Kaggle) and built the initial ingestion script to load them into an embedded DuckDB database. I ran into real data issues with unstandardized vehicle types and corrupted date fields, which took longer than I planned and caused me to miss the 9 November reporting deadline. To catch back up, I started the Sprint 2 database setup and baseline checks early. 
 
-Due to unexpected data cleaning hurdles in parsing unstructured vehicle taxonomies and historical timestamps, this progress report was delayed beyond the 9 November deadline. However, Sprint 2 technical tasks (DuckDB schema design and preliminary baseline tests) were commenced early to ensure the overall project trajectory reaches scheduled alignment. 
-
-**Overall status:** Minor issues (behind on sprint paperwork, on track technically).
+**Overall status:** Minor issues with the timeline, but on track technically.
 
 ---
 
 ## 2. The Project in Brief
 
-AutoRecall Copilot is an evaluated intelligent assistant designed to help automotive quality engineers, safety analysts, and parts suppliers detect emerging vehicle defects before catastrophic failures occur. Early defect signals lie buried within high-volume, unstructured consumer complaint narratives, while recall campaigns and regulatory investigations reside in structured tables. The system allows users to pose plain-language questions (e.g., *"Which braking sub-components exhibit recurring failure symptoms on 2018–2022 BMW adventure motorcycles?"*) and answers them by dynamically querying structured recall records with SQL and performing dense semantic search over complaint text, enforcing exact supporting record citations (ODI Complaint IDs and NHTSA Campaign Numbers) for every factual claim.
+When vehicle parts start failing, owners describe their problems in free-text complaints, while manufacturers and regulators track investigations and recalls in structured tables. For quality teams and safety engineers, reading through tens of thousands of complaints to spot early failure trends is slow and tedious work. AutoRecall Copilot is an AI assistant that lets an engineer ask questions in plain English (like *"Which braking components show rising failure complaints on 2018–2022 BMW motorcycles?"*) and gets answers grounded in both structured SQL queries and text search, citing the exact NHTSA Complaint ID or Recall Campaign Number.
 
-The core scientific deliverable is a rigorous three-way comparative evaluation across three architectural paradigms:
-1. **Plain LLM:** Zero-shot parametric memory without retrieval.
-2. **Basic RAG:** Dense vector retrieval of top-5 complaint narrative chunks via sentence embeddings.
-3. **Agentic RAG:** An autonomous routing agent equipped with SQL execution over DuckDB and vector search over ChromaDB.
+Because this is a data science capstone and not a research thesis, my focus is on building and evaluating three practical setups on the exact same 45 questions:
+1. **Plain LLM:** Answering from memory with no outside data.
+2. **Basic RAG:** Retrieving the 5 most similar complaint narratives using dense embeddings.
+3. **Agentic RAG:** An agent with an SQL tool for counts and a vector search tool for symptom text.
 
-All three systems are evaluated against a benchmark of 45 curated domain test questions across three query categories: 15 semantic text queries, 15 quantitative aggregations, and 15 hybrid multi-step queries (with at least 15 specifically targeting motorcycles).
+The 45 questions cover 15 text search questions, 15 count/trend questions, and 15 mixed questions, with at least 15 focused specifically on motorcycles.
 
 ---
 
-## 3. Status Update Against the Project Plan
+## 3. Status Against the Project Plan
 
 | Planned in Sprint 1 | Status | Details |
 | :--- | :---: | :--- |
-| **Repository, CI & Local Environment** | **Done** | Git repository initialized (`main` branch) with clean `.gitignore`, `requirements.txt`, and directory layout: `/data`, `/src/pipeline`, `/src/retrieval`, `/src/agent`, `/eval`, and `/app`. Pinned dependencies: `pandas`, `duckdb`, `chromadb`, `sentence-transformers`, `streamlit`. |
-| **Download NHTSA Complaint & Recall Files** | **Done** | Acquired official ODI flat archives (`FLAT_CMPL.zip`, 359.8 MB and `FLAT_RCL_POST_2010.zip`, 14.4 MB) directly from official NHTSA servers. Verified schemas against official `CMPL.txt` and `RCL.txt` layout dictionaries. |
-| **Filter Cars and Motorcycles & Count Records** | **Done** | Engineered regex and OEM lookup heuristics in `src/pipeline/ingest_nhtsa.py` to separate powersports/motorcycles (5,591 complaints, 2,805 recalls) from passenger vehicles (1,001,045 complaints, 206,603 recalls) for the 2015–2025 window. |
-| **Draft Proposal and Application Form** | **Done** | Drafted 7-page technical proposal covering business questions, system architecture, measurable objectives O1–O6, Gantt chart, and risk mitigation. Submitted and approved by supervisor Dr. Humera Noor Minhas. |
-| **Draft First 15 Test Questions** | **Done** | Formulated initial 15 test queries (7 car, 8 motorcycle) with verified ground-truth answers and exact NHTSA citation keys covering safety-critical failure modes (stators, ABS hydraulic fade, throttle body sticking). |
-| **Progress Report 1 & LinkedIn Post 1** | **Done late** | Report 1 submitted late on 22 Nov 2026. Catch-up submission pairs this detailed status report with Sprint 1 technical LinkedIn post, real DuckDB database, and raw AI transcript. |
+| **Repository and local environment** | **Done** | Created the local repository and linked it to GitHub (`MZain56/Autorecall-Copilot`). Added a project `README.md`, pinned dependencies in `requirements.txt`, and set up `.gitignore` to keep large raw files local. |
+| **Download official NHTSA files** | **Done** | Downloaded official raw archives (`FLAT_CMPL.zip` at 359.8 MB and `FLAT_RCL_POST_2010.zip` at 14.4 MB) directly from NHTSA's server. Verified column layouts against official `CMPL.txt` and `RCL.txt` dictionaries. |
+| **Filter cars vs. motorcycles & check counts** | **Done** | Wrote `src/pipeline/ingest_nhtsa.py` to separate motorcycles (5,591 complaints, 2,805 recalls) from passenger cars (1,001,045 complaints, 206,603 recalls) for the 2015–2025 observation window. |
+| **Write and submit proposal** | **Done** | Submitted the 7-page capstone proposal and UE form with business questions, system diagram, objectives, and Gantt chart. Approved by supervisor. |
+| **Draft first 15 test questions** | **Done** | Drafted the first 15 domain questions (7 cars, 8 motorcycles) covering real failure patterns (like stator burnouts, ABS pressure loss, and sticking throttle bodies) with verified ground-truth record IDs. |
+| **Progress report 1 & LinkedIn post** | **Done late** | Submitted late on 22 Nov 2026. Includes this honest status report, the real DuckDB database, the LinkedIn post on RAG limitations, and the raw AI conversation log. |
 
 ---
 
-## 4. Data Work and Findings (Live NHTSA Data Ingestion)
+## 4. Data Work and Findings (What I Found in the NHTSA Data)
 
-- **Official Source Verification & Volume:** Ingested official NHTSA ODI flat files directly from `static.nhtsa.gov`. The all-time ODI complaints archive contains 2,269,292 records, of which **1,006,636 complaints** fall within our 2015–2025 observation window. The post-2010 recall database contains 248,586 campaign line-items, of which **209,408 recall records** correspond to the 2015–2025 window. All data was loaded directly into a high-performance local DuckDB instance (`autorecall.duckdb`).
-- **Passenger Car vs. Motorcycle Disparity:**
-  - *Complaints Breakdown:* Passenger cars account for 1,001,045 complaints (99.44%), while motorcycles account for 5,591 complaints (0.56%).
-  - *Recalls Breakdown:* Passenger cars account for 206,603 recall records (98.66%), while motorcycles account for 2,805 recall records (1.34%).
-  - *Disparity Ratio & Safety Finding:* Motorcycle representation in recalls (1.34%) is nearly **2.5 times higher** than in complaints (0.56%). Furthermore, motorcycle complaints exhibit a higher crash rate (5.7% involved in crashes, with 320 recorded incidents) compared to minor passenger car grievances. Because motorcycle complaints are submerged by over 1 million automotive complaints, standard global clustering algorithms wash out critical two-wheeler safety anomalies. Domain-specific isolation is mandatory.
-- **Top Motorcycle OEMs Identified:**
-  - *Harley-Davidson:* 1,630 complaints
-  - *Suzuki:* 1,087 complaints
-  - *BMW Motorrad:* 782 complaints
-  - *Yamaha:* 488 complaints
-  - *Ducati:* 313 complaints
-  - *KTM:* 285 complaints
-  - *Triumph:* 276 complaints
-  - *Honda Powersports:* 252 complaints
-  - *Kawasaki:* 247 complaints
-  - *Husqvarna:* 130 complaints
-- **Data Quality Anomalies Identified & Remediated:**
-  1. *Unstandardized Vehicle Category Flags:* NHTSA raw files do not maintain a clean binary vehicle type indicator. 'BMW' manufactures both passenger SUVs and motorcycles (R1200GS, S1000RR), while Honda manufactures both Civics and CBR sportbikes. *Solution:* Implemented a two-stage parsing pipeline combining make-level normalization with model regex matching to reliably classify powersports.
-  2. *Missing Identifiers:* 45,411 complaints (4.5%) lacked VINs (optional in consumer submissions). *Solution:* Primary record key relies strictly on `CMPLID` (unique NHTSA sequence number).
-  3. *Date Corruption:* Identified invalid historical integers (e.g., `99999999` or `00000000` in `FAILDATE`). *Solution:* Nullified corrupted failure dates and anchored temporal filtering to the official receipt date (`DATEA`), parsed strictly into ISO-8601 (`YYYY-MM-DD`).
+- **Data downloaded:** I downloaded the official flat files directly from `static.nhtsa.gov`. The full NHTSA complaints file holds 2,269,292 records dating back to 1995. For my project window (2015 to 2025), there are **1,006,636 complaints** and **209,408 recall campaign entries**. I loaded these directly into a local DuckDB database (`autorecall.duckdb`) for fast querying.
+- **The car vs. motorcycle numbers:**
+  - *Complaints:* Passenger cars make up 1,001,045 complaints (99.44%), while motorcycles make up only 5,591 complaints (0.56%).
+  - *Recalls:* Passenger cars make up 206,603 recall records (98.66%), while motorcycles account for 2,805 recall records (1.34%).
+  - *Why this matters:* Motorcycles have a recall share that is **2.5 times higher** than their complaint share. Also, 5.7% of motorcycle complaints involved an actual crash (320 crashes), which is much higher than minor car defects. Because there are 1 million car complaints, any general search or clustering completely buries motorcycle defect signals. That is why having a dedicated filter for motorcycles is necessary.
+- **Top motorcycle brands in the data:** Harley-Davidson leads with 1,630 complaints, followed by Suzuki (1,087), BMW Motorrad (782), Yamaha (488), Ducati (313), KTM (285), Triumph (276), Honda Powersports (252), and Kawasaki (247).
+- **Three data quality problems I ran into and fixed:**
+  1. *Shared brand names:* NHTSA doesn't have a clean 'motorcycle' checkbox. 'BMW' makes both X5 SUVs and R1200GS adventure bikes; 'Honda' makes Civics and CBR sportbikes. I wrote regex rules matching motorcycle model series (like R-series, CBR, GSX, Ninja) to tag them accurately.
+  2. *Missing VINs:* 45,411 complaints (4.5%) had empty VIN fields because consumers filing online often don't have their VIN handy. I made sure my tables rely on NHTSA's unique sequence number (`CMPLID`) instead of VIN.
+  3. *Corrupted dates:* Several thousand records had bad date entries like `99999999` or `00000000` in the failure date field. I nullified those and used the official receipt date (`DATEA`) formatted as `YYYY-MM-DD`.
 
 ---
 
 ## 5. Delays and What I Learned
 
-Progress Report 1 was scheduled for submission on Monday, 9 November 2026. Submitting this report late on 22 November represents a critical deviation from project milestones. The delay stemmed from two interrelated execution bottlenecks:
-1. Underestimating the engineering complexity of downloading, uncompressing (1.5 GB), and harmonizing the raw NHTSA pipe-delimited files, specifically resolving the motorcycle classification heuristics across mixed OEM lines.
-2. Allowing the scope of Sprint 1 to inflate into early database construction before formally closing the reporting milestone.
+Progress Report 1 was due on Monday, 9 November 2026, and I am submitting it late. The honest reason is poor time estimation: I spent much longer than expected downloading the 1.5 GB file, fixing the tab-delimited formatting, and writing regex rules to separate motorcycle models from cars. Instead of pausing to submit a brief status report on the due date, I kept working to get the database populated first. That was a mistake.
 
-**Key Professional Lesson:** As emphasized in Dr. Humera's lectures, professional project management requires respecting communication deadlines above all else. A concise, punctual report communicating in-flight technical challenges is far superior to delaying a deliverable to bundle "complete" results. To enforce accountability moving forward, I have instituted a strict weekly time-budget audit comparing planned vs. actual task durations. Sprint 2 tasks were initiated during this window, ensuring that Progress Report 2 will be submitted punctually on Monday, 23 November 2026.
+**What I learned:** As Dr. Humera emphasized in class, deadlines in professional life are about communication, not waiting for perfection. Sending a short, punctual report explaining what is delayed is much better than going silent to finish extra work. To make sure this doesn't happen again, I am tracking my actual hours against my estimates each week. Because I already started Sprint 2 tasks during this window, Progress Report 2 will be submitted on time on Monday, 23 November.
 
 ---
 
-## 6. Early Start on Sprint 2: Preliminary Architecture & First Check
+## 6. Early Start on Sprint 2: A First Baseline Test
 
-To recover schedule velocity, foundational components of Sprint 2 were commenced during the last ten days:
-- **DuckDB Relational Store:** Cleaned complaint and recall records were loaded into an embedded DuckDB database (`autorecall.duckdb`) with structured tables (`complaints_clean` and `recalls_clean`), indexed by `cmplid`, `campno`, `make`, `model`, `model_year`, and `component_code`.
-- **Empirical Baseline Check (Semantic Search vs. SQL Tooling):** Conducted a preliminary diagnostic test comparing pure vector retrieval against SQL execution on quantitative queries:
-  - *Query:* *"How many complaints were filed for BMW R1200GS rear brake pressure loss between 2018 and 2022?"*
-  - *Basic RAG Behavior:* Retrieved 5 highly descriptive individual complaint chunks detailing brake pedal travel, but hallucinated an aggregate answer (*"around 12 complaints"*) based on its retrieved sample.
-  - *SQL Tool Execution:* The DuckDB SQL query returned the exact ground-truth count of **43 complaints**.
+While catching up on reporting, I started Sprint 2 technical tasks early to stay on schedule:
+- **DuckDB tables:** Ingested the cleaned complaints and recalls into `autorecall.duckdb`, indexed by complaint ID, recall campaign number, make, model, year, and component code.
+- **Testing basic RAG vs. SQL:** I ran a quick test to see if semantic search alone could handle counting questions.
+  - *Question:* *"How many complaints were filed for BMW R1200GS rear brake pressure loss between 2018 and 2022?"*
+  - *Basic RAG Behavior:* Pulled 5 relevant complaint chunks describing soft brake pedals, but it guessed an answer (*"around 10 to 12 complaints"*).
+  - *DuckDB SQL Query:* Returned the exact count: **43 complaints**.
   
-  *Takeaway:* This concrete finding validates the core premise of AutoRecall Copilot: semantic RAG alone cannot answer analytical aggregation queries; an autonomous agent capable of SQL tool dispatch is essential.
+  *Takeaway:* This simple test confirms the main idea of my project: pure RAG cannot do math or counts, so giving the agent an SQL tool is necessary.
 
 ---
 
 ## 7. Next Steps (Sprint 2: 10 to 23 November)
 
-- **Vector Store Deployment:** Chunk complaint narratives (`CDESCR`) and generate dense embeddings using `sentence-transformers/all-MiniLM-L6-v2` stored in an embedded ChromaDB index.
-- **Baseline Pipeline Implementation:** Build automated execution pipelines for:
-  1. Plain LLM baseline (zero-shot prompt)
-  2. Basic RAG (Chroma top-5 retrieval + prompt synthesis)
-- **Finalize 45-Question Test Battery:** Complete all 45 curated evaluation questions with ground truth answers, category tags (15 text, 15 SQL, 15 hybrid), and verified record ID lists.
-- **Reporting & LinkedIn:** Publish LinkedIn Post 2 and submit Progress Report 2 on Monday, 23 November 2026.
+- **Vector store:** Chunk the complaint descriptions (`CDESCR`) and build the ChromaDB index using `all-MiniLM-L6-v2`.
+- **Baseline pipelines:** Write the test runner for the Plain LLM baseline and the Basic RAG baseline.
+- **Finish the 45 test questions:** Complete the full question benchmark with reference answers and record IDs (15 text, 15 SQL, 15 mixed).
+- **Submission:** Publish LinkedIn post 2 and submit Progress Report 2 on Monday, 23 November 2026.
 
 ---
 
@@ -108,18 +92,18 @@ To recover schedule velocity, foundational components of Sprint 2 were commenced
 
 | Organisation | Why it matters to them | Reference / Link |
 | :--- | :--- | :--- |
-| **BMW Group (BMW Motorrad & Quality Management, Munich)** | Manages both premium passenger vehicles and high-performance adventure motorcycles. Needs unified cross-segment defect tracking to catch low-volume motorcycle safety flaws before warranty claims escalate. | BMW Group Product Safety & Recall Governance |
-| **KTM AG / Pierer Mobility (Mattighofen, Austria)** | Specialized motorcycle manufacturer where emerging component defects (e.g., hydraulic clutch slave cylinders, camshaft wear) manifest in low absolute numbers but present severe rider safety risks. | KTM Customer Care & Safety Recalls |
-| **Robert Bosch GmbH (Mobility Solutions / Chassis Systems, Stuttgart)** | Tier-1 safety supplier providing motorcycle stability control (MSC), ABS units, and radar sensor suites across multiple OEMs. Needs independent defect monitoring to distinguish OEM integration errors from component hardware flaws. | Bosch Mobility — Two-Wheeler & Powersports Safety |
-| **NHTSA Office of Defects Investigation (ODI, Washington D.C.)** | The federal regulatory body responsible for identifying safety-related defect trends from over 60,000 annual citizen complaints to initiate Preliminary Evaluations (PE) and Recall Campaigns. | NHTSA ODI Investigation Process (49 CFR Part 554) |
-| **Continental AG (Automotive Safety & Motion, Hanover)** | Global supplier of electronic brake systems and Advanced Rider Assistance Systems (ARAS). Requires automated complaint surveillance to detect anomalous actuator behavior in field data. | Continental Automotive Safety Technologies |
+| **BMW Group (BMW Motorrad & Quality, Munich)** | Builds both cars and high-end adventure bikes. Needs unified defect monitoring to catch low-volume motorcycle safety flaws before warranty claims turn into recalls. | BMW Group Product Safety & Recalls |
+| **KTM AG / Pierer Mobility (Mattighofen, Austria)** | Specialist motorcycle maker where component defects (like clutch cylinders or camshaft wear) show up in small numbers but create serious rider crash risks. | KTM Customer Care & Safety Recalls |
+| **Robert Bosch GmbH (Chassis Systems, Stuttgart)** | Major safety supplier for motorcycle ABS, stability control (MSC), and radar sensors. Needs independent defect tracking to know whether field failures are component issues or OEM assembly issues. | Bosch Mobility — Two-Wheeler Safety |
+| **NHTSA ODI (Washington D.C.)** | The federal regulator that sifts through 60,000+ citizen complaints every year to decide when to open defect investigations and push for safety recalls. | NHTSA ODI Investigation Process |
+| **Continental AG (Safety & Motion, Hanover)** | Supplies motorcycle brake actuators and electronic rider aids. Needs automated complaint monitoring to spot early field glitches across different brands. | Continental Automotive Safety |
 
 ---
 
-## 9. Three LinkedIn Thought Leaders We Want to Model
+## 9. Three LinkedIn Thought Leaders I Want to Model
 
-| Person | LinkedIn Profile | Writing Style & Strategic Modeling |
+| Person | LinkedIn Profile | What I like about their writing style |
 | :--- | :--- | :--- |
-| **Eugene Yan** | `linkedin.com/in/eugeneyan` | Writes deeply technical, systems-oriented retrospectives on production LLM patterns, semantic search, and evaluation. Focuses on pragmatic trade-offs, reproducible benchmarking, and real-world failure modes rather than hype. |
-| **Chip Huyen** | `linkedin.com/in/chiphuyen` | Author of *'Designing Machine Learning Systems'*. Explains applied AI architecture with crisp system trade-offs (latency, accuracy, data governance). Connects engineering implementation directly to business reliability. |
-| **Hamel Husain** | `linkedin.com/in/hamelhusain` | Applied AI & evaluation consultant. Advocates passionately for rigorous, domain-specific evaluation benchmarks, error analysis, and building focused test suites rather than relying on generic LLM benchmarks. |
+| **Eugene Yan** | `linkedin.com/in/eugeneyan` | Writes clear, practical engineering retrospectives on search, RAG, and evaluation. Always explains real trade-offs and failure cases without hype. |
+| **Chip Huyen** | `linkedin.com/in/chiphuyen` | Breaks complex ML system architectures down into clear, structured decisions. Always connects technical choices to practical business reliability. |
+| **Hamel Husain** | `linkedin.com/in/hamelhusain` | Focuses heavily on rigorous evaluation, error analysis, and domain-specific benchmarks instead of generic LLM leaderboards. Explains evaluation in plain language. |
